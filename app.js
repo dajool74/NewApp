@@ -13,10 +13,16 @@ var Actions = {
 };
 
 var Fetcher = {
-       postAjax:function(){
+       init:function(method, url, data){
+          if(method == 'GET'){
+             this.getAjax(url, data);
+          }
+          else{this.post.Ajax(Url, data)}
+       }
+       postAjax:function(url, data){
               
        },
-       getAjax:function(){
+       getAjax:function(url, data){
               
        }
 }
@@ -26,8 +32,15 @@ var Model = {
        getAllDevices:function(){
               return Devices;
        },
-       getOrder:function(){
-              //var url = Actions.
+       scanDevice:function(_id){
+          var devices, device;
+          devices = getAllDevices();
+          for (i = 0; i < devices.length; i++) {
+             if(_id == devices[i].name){
+                device = device[i];
+                break;   
+            }
+         return device;
        }
        
 }
@@ -43,6 +56,16 @@ App = {
             },
        allDevices:function(){
               return Model.getAllDevices();
+       }
+       getDeviceId:function(_id){
+          device = Model.scanDevices(_id)
+          return device;
+       }
+       getOrderByDevice:function(_id){
+          var model_device = this.getDeviceId(_id);
+          var url_data = Actions.getOrderByDevice();
+          Fetcher.init(url_data[0], url_data[1], _id)
+          
        }
       }
       
