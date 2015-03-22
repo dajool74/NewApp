@@ -17,15 +17,35 @@ min-width: 500px;
 <script>
 $(document).ready(function () {
 
-    // Bind the event.
+
     window.onhashchange = function(){
         // Alerts every time the hash changes!
         var _hash = location.hash;
         alert( 'hash = '+_hash );
         $('#valueHash').html(_hash);
     };
-    // Trigger the event (useful on page load).
-   //$(window).hashchange();
+
+    window.onload = function(){
+        var _hash = location.hash;
+        if(_hash != ''){
+             alert( 'hash = '+_hash );
+             $('#valueHash').html(_hash);
+        }
+
+    };
+
+    $('#btn_go').click(function(e){
+       e.preventDefault();
+       location.hash = '#go'
+    
+     });
+
+    $('#btn_get').click(function(e){
+       e.preventDefault();
+       location.hash = '#get'
+    
+     });
+
 
 /********
 $("#postData").click(function(evt) {
@@ -76,6 +96,8 @@ error: function() { alert('Failed!');},
 </head>
 <body>
 <h1>Hash </h1>
+<input type='button' value='go' id='btn_go'/>
+<input type='button' value='get'id='btn_get' />
 <div id="valueHash"></div>
 
 <div id="resp">
