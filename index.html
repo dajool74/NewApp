@@ -18,12 +18,12 @@ min-width: 500px;
 $(document).ready(function () {
 
     // Bind the event.
-    window.onhashchange( function(){
+    window.onhashchange = function(){
         // Alerts every time the hash changes!
         var _hash = location.hash;
         alert( 'hash = '+_hash );
         $('#valueHash').html(_hash);
-    });
+    };
     // Trigger the event (useful on page load).
    //$(window).hashchange();
 
