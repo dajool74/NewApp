@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<title>Ajax test database</title>
+<meta charset="utf-8" />
+<style type="text/css">
+body {
+text-align: center;
+min-width: 500px;
+}
+#output {margin-top:23px;width:66%; height:200px;}
+#qq {width:66%; height:150px; background:#f1f1f1;text-align:top;padding:5px;}
+#output {margin-top:23px;width:86%; height:200px;}
+#_url {width:80%;height:40px;}
+</style>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+$(document).ready(function () {
+
+    // Bind the event.
+    $(window).hashchange( function(){
+        // Alerts every time the hash changes!
+        var _hash = location.hash;
+        alert( 'hash = '+_hash );
+        $('#valueHash').html(_hash);
+    })
+    // Trigger the event (useful on page load).
+   $(window).hashchange();
+
+/********
+$("#postData").click(function(evt) {
+evt.preventDefault();
+var _text = $("#qq").val();
+var url = $("#_url").val();
+var total_url = "http://173.230.132.50"+url
+alert("url: "+total_url);
+//var formData = JSON.stringify({_json:text});
+//alert('url = '+total_url+' \n json ='+formData);
+// $("#output").val(formData);
+$.ajax({
+type: "POST",
+url: total_url,
+data: _text,
+processData: false,
+success: function(data){
+data_json = JSON.stringify(data)
+alert(data_json);
+$("#output").val(data_json);
+},
+error: function() { alert('Failed!');},
+dataType: "json",
+contentType : "application/json; charset=utf-8"
+});
+}); // #postdata
+$("#getData").click(function(evt) {
+evt.preventDefault();
+var text = $("#qq").val();
+var url = $("#_url").val();
+var total_url = "http://173.230.132.50"+url
+alert("url: "+total_url);
+//var formData = JSON.stringify(text);
+// $("#output").val(formData);
+$.ajax({
+type: "GET",
+url: total_url,
+// data: formData,
+success: function(data){$("#output").val(data);},
+error: function() { alert('Failed!');},
+//dataType: "json",
+//contentType : "application/json"
+});
+}); // #getdata
+*********************************/
+}); // ready()
+</script>
+</head>
+<body>
+<h1>Hash </h1>
+<div id="valueHash"></div>
+
+<div id="resp">
+</div>
+</body>
+</html>
