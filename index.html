@@ -18,31 +18,36 @@ min-width: 500px;
 $(document).ready(function () {
 
 
+    function Hash(hash){
+         if(hash != ''){
+             var hash_array = hash.split('/');
+             var uri = hash_array[1];
+             var param = hash_array[2];
+             $('#valueHash').html('<div>hash = '+hash+'</div><div>uri = '+uri+'<div>param = '+param+'</div>');
+            }
+    }
+
     window.onhashchange = function(){
         // Alerts every time the hash changes!
         var _hash = location.hash;
-        alert( 'hash = '+_hash );
-        $('#valueHash').html(_hash);
+        Hash(_hash);
     };
 
     window.onload = function(){
         var _hash = location.hash;
-        if(_hash != ''){
-             alert( 'hash = '+_hash );
-             $('#valueHash').html(_hash);
-        }
+        Hash(_hash);
 
     };
 
     $('#btn_go').click(function(e){
        e.preventDefault();
-       location.hash = '#go'
+       location.hash = '#go/1/g'
     
      });
 
     $('#btn_get').click(function(e){
        e.preventDefault();
-       location.hash = '#get'
+       location.hash = '#get/2/e'
     
      });
 
